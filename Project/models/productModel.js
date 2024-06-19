@@ -18,6 +18,14 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    rating: {
+      type: Number,
+      required: true,
+    },
+    discount: {
+      type: Number,
+      required: true,
+    },
     category: {
       type: mongoose.ObjectId,
       ref: "Category",
@@ -30,6 +38,10 @@ const productSchema = new mongoose.Schema(
     photo: {
       data: Buffer,
       contentType: String,
+    },
+    availability: {
+      type: String,
+      required: true,
     },
     shipping: {
       type: Boolean,

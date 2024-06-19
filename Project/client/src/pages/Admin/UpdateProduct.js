@@ -14,8 +14,11 @@ const UpdateProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [rating, setRating] = useState("");
+  const [discount, setDiscount] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [availability, setAvailability] = useState("");
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
   const [id, setId] = useState("");
@@ -30,8 +33,10 @@ const UpdateProduct = () => {
       setId(data.product._id);
       setDescription(data.product.description);
       setPrice(data.product.price);
-      setPrice(data.product.price);
+      setRating(data.product.rating);
+      setDiscount(data.product.discount);
       setQuantity(data.product.quantity);
+      setAvailability(data.product.availability);
       setShipping(data.product.shipping);
       setCategory(data.product.category._id);
     } catch (error) {
@@ -67,7 +72,11 @@ const UpdateProduct = () => {
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
+      productData.append("rating", rating);
+      productData.append("discount", discount);
       productData.append("quantity", quantity);
+      productData.append("availability", availability);
+      productData.append("shipping", shipping);
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
@@ -189,6 +198,26 @@ const UpdateProduct = () => {
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
+
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={rating}
+                  placeholder="write a Rating"
+                  className="form-control"
+                  onChange={(e) => setRating(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={discount}
+                  placeholder="write a Discount"
+                  className="form-control"
+                  onChange={(e) => setDiscount(e.target.value)}
+                />
+              </div>
               <div className="mb-3">
                 <input
                   type="number"
@@ -198,6 +227,17 @@ const UpdateProduct = () => {
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
+
+              <div className="mb-3">
+                <textarea
+                  type="text"
+                  value={availability}
+                  placeholder="write a availability"
+                  className="form-control"
+                  onChange={(e) => setAvailability(e.target.value)}
+                />
+              </div>
+
               <div className="mb-3">
                 <Select
                   bordered={false}

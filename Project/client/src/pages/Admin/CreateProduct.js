@@ -13,8 +13,11 @@ const CreateProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [rating, setRating] = useState("");
+  const [discount, setDiscount] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [availability, setAvailability] = useState("");
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
 
@@ -43,9 +46,12 @@ const CreateProduct = () => {
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
+      productData.append("rating", rating);
+      productData.append("discount", discount);
       productData.append("quantity", quantity);
       productData.append("photo", photo);
       productData.append("category", category);
+      productData.append("availability", availability);
       const { data } = axios.post(
         "/api/v1/product/create-product",
         productData
@@ -125,7 +131,7 @@ const CreateProduct = () => {
                 <textarea
                   type="text"
                   value={description}
-                  placeholder="write a description"
+                  placeholder="write company name"
                   className="form-control"
                   onChange={(e) => setDescription(e.target.value)}
                 />
@@ -143,12 +149,41 @@ const CreateProduct = () => {
               <div className="mb-3">
                 <input
                   type="number"
+                  value={rating}
+                  placeholder="write a Rating"
+                  className="form-control"
+                  onChange={(e) => setRating(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={discount}
+                  placeholder="write a Discount"
+                  className="form-control"
+                  onChange={(e) => setDiscount(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="number"
                   value={quantity}
                   placeholder="write a quantity"
                   className="form-control"
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
+
+              <div className="mb-3">
+                <textarea
+                  type="text"
+                  value={availability}
+                  placeholder="write availability info"
+                  className="form-control"
+                  onChange={(e) => setAvailability(e.target.value)}
+                />
+              </div>
+
               <div className="mb-3">
                 <Select
                   bordered={false}
